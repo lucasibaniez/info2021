@@ -11,7 +11,7 @@ Desafío 1
 
 def obtener_anios_degradacion(tipo_material):
 	if tipo_material == 1:
-		return 150
+		return 810
 	elif tipo_material == 2:
 		return 1000
 	elif tipo_material == 3:
