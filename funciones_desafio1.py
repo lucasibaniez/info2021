@@ -19,6 +19,8 @@ def obtener_anios_degradacion(tipo_material):
 	elif tipo_material == 4:
 		return 5    
 
+# AGREGO UN COMENTARIo
+
 def devolver_opcion():
 	print("====================")
 	print("SALVEMOS EL PLANETA")
@@ -32,20 +34,6 @@ def devolver_opcion():
 	print("====================")
 	return input()
 
-salio = False
-es_valido = False
-while not es_valido and not salio:
-	opcion = devolver_opcion()
-	if not opcion.isdigit():
-		opcion = devolver_opcion()
-		continue
-	opcion = int(opcion)
-	if opcion == 0:
-		salio = True
-	elif opcion>= 5:
-		continue
-	else:
-		es_valido = True
 
 if es_valido and not salio:
 	anios_degradacion = obtener_anios_degradacion(opcion)
