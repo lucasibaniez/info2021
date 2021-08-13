@@ -18,7 +18,7 @@
 					  	{% for a in amigos  %}
 						    <tr>
 						      <td>{{a.nombre}}</td>
-						      <td>{{a.apellido}}</td>
+						      <td>{{a.apellido|default:'-'}}</td>
 						      <td>{{a.domicilio}}</td>
 						    </tr>
 					    {% endfor %}
