@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import inicio
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/', inicio),
+    path('inicio/', views.inicio),
+    path('login/', views.login),
 
     path('Amigos/', include('apps.amigos.urls'))
 
