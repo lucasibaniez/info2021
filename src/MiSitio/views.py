@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
+def ini(request):
+	template_name="ini.html"
+	ctx = {}
+	return render(request,template_name,ctx)
+
 def inicio(request):
 	template_name="inicio.html"
 
