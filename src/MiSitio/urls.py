@@ -7,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('inicio/', views.inicio),
     path('login/', views.login),
-    path('', views.ini),
+    path('', views.ini, name='principal'),
 
     path('Amigos/', include('apps.amigos.urls'))
 
