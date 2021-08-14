@@ -1,23 +1,14 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts           import render
 
-def ini(request):
-	template_name="ini.html"
-	
-	return render(request,template_name)
 
 def inicio(request):
 	template_name="inicio.html"
+	u = User.objects.get(username="lucas")
+	u.last_name = "Suarez"
+	u.save()
+	return render(request,template_name)
 
-	lista_alumnos = [
-		"alumno 1",
-		"alumno 2"
-	]
-
-	ctx={
-		'username': "lucas",
-		"lista": lista_alumnos
-	}
-	return render(request,template_name, ctx )
 
 def login(request):
 	template_name="login.html"

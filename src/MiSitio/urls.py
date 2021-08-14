@@ -5,9 +5,8 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/', views.inicio),
+    path('', views.inicio, name='principal'),
     path('login/', views.login),
-    path('', views.ini, name='principal'),
 
     path('Amigos/', include('apps.amigos.urls'))
 
