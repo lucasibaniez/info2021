@@ -21,6 +21,10 @@
 						      <td>{{a.apellido|default:'-'}}</td>
 						      <td>{{a.domicilio}}</td>
 						    </tr>
+						{% empty %}
+							<tr>
+								<td>No se encontraron resultados</td>
+							</tr>
 					    {% endfor %}
 					  </tbody>
 					</table>

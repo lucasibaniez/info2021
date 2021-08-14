@@ -29,7 +29,11 @@
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white">OPCIONES</h4>
               <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Iniciar sesion</a></li>
+                {% if user.is_authenticated %}
+                  <li><a href="{% url 'logout' %}" class="text-white">Cerrar sesion</a></li>
+                {% else %}
+                  <li><a href="{% url 'login' %}" class="text-white">Iniciar sesion</a></li>
+                {% endif %} 
                 <li><a href="{% url 'amigos:listar' %}" class="text-white">Ver Amigos</a></li>
                 <li><a href="#" class="text-white">Ver Prestamos</a></li>
               </ul>
@@ -56,10 +60,13 @@
         <div class="container">
           <h1 class="jumbotron-heading">Sitio de prestamos de DVD</h1>
           <p class="lead text-muted">Sitio para la gestión de prestamos de tus dvds entre tus amigos.</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Iniciar sesion</a>
-            <!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
-          </p>
+          {% if not user.is_authenticated %}
+            <p>
+              <a href="{% url 'login' %}" class="btn btn-primary my-2">Iniciar sesion</a>
+              <!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
+            </p> 
+          {% endif %}
+          
         </div>
       </section>
 
