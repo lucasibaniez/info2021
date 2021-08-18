@@ -3,7 +3,17 @@
 {% block contenido %}
 	<div class="album py-5 bg-light">
     	<div class="container">
+    		<div class="row">
+    			<div class="col">
+    				<h1>Lista de amigos</h1>
+    			</div>
+    		</div>
 
+    		<div class="row" style="padding:10px;">
+    			<div class="col">
+    				<a href="{% url 'amigos:nuevo' %}" class="btn btn-success" style="float:right;">Nuevo Amigo</a>
+				</div>
+    		</div>
       		<div class="row">
       			<div class="col">
       				<table class="table">
@@ -12,14 +22,18 @@
 					      <th scope="col">Nombre</th>
 					      <th scope="col">Apellido</th>
 					      <th scope="col">Direccion</th>
+					      <th></th>
 					    </tr>
 					  </thead>
 					  <tbody>
-					  	{% for a in amigos  %}
+					  	{% for a in amigos %}
 						    <tr>
 						      <td>{{a.nombre}}</td>
 						      <td>{{a.apellido|default:'-'}}</td>
 						      <td>{{a.domicilio}}</td>
+						      <td>
+						      	<a href="{% url 'amigos:editar' a.pk %}">Editar</a>
+						      </td>
 						    </tr>
 						{% empty %}
 							<tr>
