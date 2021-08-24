@@ -13,6 +13,7 @@ urlpatterns = [
     path('logout/',auth_views.logout_then_login, name="logout"),
 
     path('Amigos/', include('apps.amigos.urls')),
+    path('Dvd/', include('apps.dvd.urls')),
 
 
 

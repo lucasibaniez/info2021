@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+
+{% block contenido %}
+	<div class="album py-5 bg-light">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col">
+    				<h1>NUEVO DVD</h1>
+    			</div>
+    		</div>
+
+    		<div class="row">
+    			
+    			<div class="col">
+    				<div class="bd-example">
+	    				<form method="POST">{% csrf_token %}
+	    					{% include "includes/_form_errors.html" with formulario=form %}
+
+	    					<div class="mb-3">
+	    						<label class="form-label">{{form.nombre.label}}</label>
+	    						{{form.nombre}}
+	    					</div>
+
+	    					<div class="mb-3">
+	    						<label class="form-label">{{form.fecha_compra.label}}</label>
+	    						{{form.fecha_compra}}
+	    					</div>
+	    					<div class="mb-3">
+	    						<label class="form-label">{{form.cant_unidades.label}}</label>
+	    						{{form.cant_unidades}}
+	    					</div>
+	    					<div class="mb-3">
+	    						<label class="form-label">{{form.categorias.label}}</label>
+	    						{{form.categorias}}
+	    					</div>
+
+	    					
+	    					<div class="form-check">
+	    						<label class="form-check-label">{{form.estado.label}}</label>
+	    						{{form.estado}}
+	    					</div>
+	    					<br><br><br>
+	    					<button type="submit" class="btn btn-primary">Guardar</button>
+	    					<a class="btn btn-danger" href="{% url 'amigos:listar' %}">Cancelar</a>
+	    				</form>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+{% endblock contenido %}
