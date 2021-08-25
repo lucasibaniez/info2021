@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+
+{% block css_extras %}    
+	<style type="text/css">
+		
+		.bd-example {
+		    padding: 1.5rem;
+		    margin-right: 0;
+		    margin-left: 0;
+		    border-width: 1px;
+		    border-top-left-radius: .25rem;
+		    border-top-right-radius: .25rem;
+		}
+
+
+
+	</style>
+{% endblock css_extras %}
+{% block contenido %}
+	<div class="album py-5 bg-light">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col">
+    				<h1>Preguntas</h1>
+    			</div>
+    		</div>
+
+    		<div class="row">
+    			
+    			<div class="col">
+    				<div class="bd-example">
+	    				<form method="POST">{% csrf_token %}
+	    					{% include "includes/_form_errors.html" with formulario=form %}
+	    					{% include "includes/_forms.html" with formulario=form %}
+
+	    					<button type="submit" class="btn btn-primary">Guardar</button>
+	    					<a class="btn btn-danger" href="{% url 'amigos:listar' %}">Cancelar</a>
+	    				</form>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+{% endblock contenido %}
