@@ -1,0 +1,23 @@
+{% extends "base/base.html" %}
+
+{% block contenido %}
+	<div class="album py-5 bg-light">
+    	<div class="container">
+
+      		<div class="row">
+        		<div class="col">
+        			<h1>Iniciar sesion</h1>
+
+        			<form method="POST">{% csrf_token %}
+					  
+					  	{% include "includes/_form_errors.html" with formulario=form %}
+	    			  	{% include "includes/_forms.html" with formulario=form %}
+
+					  
+
+					</form>
+        		</div>
+        	</div>
+        </div>
+    </div>
+{% endblock contenido %}

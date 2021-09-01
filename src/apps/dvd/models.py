@@ -22,9 +22,14 @@ class Dvd(models.Model):
 
 	estado = models.CharField(max_length=1, choices=ESTADO_CHOICES, default="A")
 
+	estado2 = models.BooleanField(default=True)
+
 	class Meta:
 		db_table = 'dvds'
 		# verbose_name_plural='Dvdses'
+
+	def __str__(self):
+		return f"({self.id}) - {self.nombre}"
 """
 class DvdCat(models.Model):
 	categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)

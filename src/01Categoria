@@ -1,0 +1,1 @@
+[{"model": "dvd.categoria", "pk": 1, "fields": {"nombre": "Pelea"}}, {"model": "dvd.categoria", "pk": 2, "fields": {"nombre": "Ciencia Ficcion"}}, {"model": "dvd.categoria", "pk": 3, "fields": {"nombre": "Infantil"}}]

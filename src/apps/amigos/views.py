@@ -69,6 +69,12 @@ class Listar(LoginRequiredMixin, ListView):
 
 	
 	def get_queryset(self):
+		"""
+		a = Amigo.objects.get(id=1)
+		a = Amigo.objects.filter(nombre = "lucas", id=1).order_by('id').last()
+		for x in a:
+			print(x)
+		"""
 		if self.request.user.is_superuser:
 			return Amigo.objects.all()
 
@@ -81,3 +87,11 @@ class Listar(LoginRequiredMixin, ListView):
 		context["color"] = "amarillo"
 		return context
 	"""
+
+"""
+def Jugar(request, nivel):
+	if nivel == 1:
+		cant_preg = 10
+	...
+	return render ...
+"""

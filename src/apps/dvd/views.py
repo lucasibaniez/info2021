@@ -1,10 +1,35 @@
 from django.views.generic import ListView, CreateView
 from django.shortcuts     import render
 from django.urls          import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from .models import Dvd
 from .forms  import DvdForm, PreguntasForm, PreguntasForm2
 
+
+class Listar(LoginRequiredMixin, ListView):
+	template_name = "dvd/listar.html"
+	model = Dvd
+	context_object_name = 'dvds'
+
+	
+	def get_queryset(self):
+		#dvd = Dvd.objects.get(id=1)
+		#print("==================")
+		#for c in dvd.categorias.all():
+		#	print(c)
+		#print("==================")
+		# x = Dvd.objects.filter(categorias__nombre="Infantil", es_admin=True)
+
+		x = Dvd.objects.all()
+		return x
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context["es_administrador"] = False
+		return context
+	
 class CrearDvd(CreateView):
 	model = Dvd
 	template_name = "dvd/crear.html"
@@ -30,7 +55,24 @@ def preguntar2(request):
 
 	if request.method == "POST":
 		respuestas_marcadas = request.POST.getlist('respuestas')
+
+		"""
+
+		x = Amigo.objects.all().order_by("puntaje", "")   # [:10]
+		if len(x) >= 10:
+			x = Amigo.objects.all()[:10]
+		else:
+			x = Amigo.objects.all()[:len(x)]
+
+		puntaje_total = 100
+
+
+		request.user.puntaje = puntaje_total
+		request.user.save()
+		"""
 		# string("asd")
+
+		# return redirect("jugar:ver_respuesta")
 
 
 	ctx["form"] = PreguntasForm(pregunta="¿Cual de los siguientes numeros son numeros pares?", respuestas=[(11, "44"),(12, "83"), (43, "91")])

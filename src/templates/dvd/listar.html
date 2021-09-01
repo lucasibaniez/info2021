@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+
+{% block contenido %}
+	<div class="album py-5 bg-light">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col">
+    				<h1>Lista de Dvd</h1>
+    			</div>
+    		</div>
+
+    		<div class="row">
+      			<div class="col">
+      				<h1> Mostrando un boolean</h1>
+      				{% if es_administrador %}
+      					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+  <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+</svg>
+      				{% else %}
+      					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+</svg>
+      					
+      				{% endif %}
+      			</div>
+      		</div>
+      		<div class="row">
+      			<div class="col">
+      				<table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">Nombre</th>
+					      <th scope="col">Fecha de Compra</th>
+					      <th scope="col">Cantidad de Unidades</th>
+					      <th>Categorias</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	{% for dvd in dvds %}
+						    <tr>
+						      <td>{{dvd.nombre}}</td>
+						      <td>{{dvd.fecha_compra}}</td>
+						      <td>{{dvd.cant_unidades}}</td>
+						      <td>
+						      	{% for c in dvd.categorias.all  %}
+						      		<span class="badge badge-primary">{{c.nombre}}</span>
+						      	{% endfor %}
+						      </td>
+						    </tr>
+						{% empty %}
+							<tr>
+								<td>No se encontraron resultados</td>
+							</tr>
+					    {% endfor %}
+					  </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock contenido %}
